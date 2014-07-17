@@ -30,6 +30,7 @@ class PizzaTypePriceVC: UIViewController {
         let priceString:NSString = sender.text
         pizzaPrice = priceString.doubleValue
         displayPizzaPrice()
+        priceStepper.value = pizzaPrice
     }
     @IBAction func priceStepper(sender: UIStepper) {
         pizzaPrice = sender.value
