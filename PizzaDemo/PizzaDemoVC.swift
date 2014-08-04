@@ -16,10 +16,10 @@ class PizzaDemoVC: UIViewController, PizzaTypeTableDelegate {
     
     let clearString = "I Like Pizza!"
     
-    @IBOutlet var priceLabel : UILabel   //added 07/01/14
-    @IBOutlet var resultsDisplayLabel : UILabel
+    @IBOutlet var priceLabel : UILabel!   //added 07/01/14
+    @IBOutlet var resultsDisplayLabel : UILabel!
     
-    @IBOutlet var pizzaType: UISegmentedControl
+    @IBOutlet var pizzaType: UISegmentedControl!
     @IBAction func pizzaType(sender : UISegmentedControl) {
         let index = sender.selectedSegmentIndex
         pizza.pizzaType = sender.titleForSegmentAtIndex(index)
@@ -31,7 +31,7 @@ class PizzaDemoVC: UIViewController, PizzaTypeTableDelegate {
         controller.navigationController.popViewControllerAnimated(true)
         displayPizza()
         //update the segment index to match new pizza type
-        for index in 0..pizzaType.numberOfSegments{
+        for index in 0..<pizzaType.numberOfSegments{
             if pizza.pizzaType == pizzaType.titleForSegmentAtIndex(index){
                 pizzaType.selectedSegmentIndex = index
             }
