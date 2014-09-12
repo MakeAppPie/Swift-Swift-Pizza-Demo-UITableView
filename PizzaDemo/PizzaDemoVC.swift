@@ -22,13 +22,13 @@ class PizzaDemoVC: UIViewController, PizzaTypeTableDelegate {
     @IBOutlet var pizzaType: UISegmentedControl!
     @IBAction func pizzaType(sender : UISegmentedControl) {
         let index = sender.selectedSegmentIndex
-        pizza.pizzaType = sender.titleForSegmentAtIndex(index)
+        pizza.pizzaType = sender.titleForSegmentAtIndex(index)!
         displayPizza()
     }
     
     func pizzaTypeTableDidFinish(controller: PizzaTypeTableVC, pizza: Pizza) {
         self.pizza = pizza
-        controller.navigationController.popViewControllerAnimated(true)
+        controller.navigationController?.popViewControllerAnimated(true)
         displayPizza()
         //update the segment index to match new pizza type
         for index in 0..<pizzaType.numberOfSegments{
@@ -46,7 +46,7 @@ class PizzaDemoVC: UIViewController, PizzaTypeTableDelegate {
     }
     
     @IBAction func sizeButton(sender : UIButton) {
-        pizza.pizzaDiameter = pizza.diameterFromString(sender.titleLabel.text)
+        pizza.pizzaDiameter = pizza.diameterFromString(sender.titleLabel!.text!)
         displayPizza()
     }
     
@@ -70,11 +70,11 @@ class PizzaDemoVC: UIViewController, PizzaTypeTableDelegate {
     func pizzaTypeDidFinish(controller: PizzaTypePriceVC, type: String, price: Double) {
         pizza.pizzaType = type
         pizza.pizzaPricePerInSq[pizza.pizzaType] = price
-        controller.navigationController.popViewControllerAnimated(true)
+        controller.navigationController?.popViewControllerAnimated(true)
         displayPizza()
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         /* -------------------------------------------
         /*replaced 7/6/14 for new segue to tableview  */
         if segue.identifier == "typeprice" {

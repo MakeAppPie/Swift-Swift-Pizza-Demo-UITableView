@@ -54,7 +54,7 @@ class Pizza {
     
     func unitPrice() ->Double{
         let unitPrice = pizzaPricePerInSq[pizzaType]    //optional type ?Double
-        if unitPrice{
+        if (unitPrice != nil){
             return unitPrice!
         }                               //optional type ?Double checking for nil
         else {
@@ -64,7 +64,7 @@ class Pizza {
     
     func pizzaPrice() ->Double{
         let unitPrice = pizzaPricePerInSq[pizzaType]    //optional type ?Double
-        if unitPrice{                                   //optional type ?Double checking for nil
+        if (unitPrice != nil){                                   //optional type ?Double checking for nil
             return pizzaArea() * unitPrice!             //unwrapping the optional type
         }
         return 0.0
